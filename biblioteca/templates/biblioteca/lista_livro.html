@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lista de Livros</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <header>
+        <h1>Livros Cadastrados</h1>
+    </header>
+    <div class="container">
+        <a href="{% url 'novo_livro' %}">Adicionar Novo Livro</a>
+        <ul>
+            {% for livro in livros %}
+                <li>{{ livro.titulo }} - {{ livro.autor }} ({{ livro.publicado_em }})</li>
+            {% empty %}
+                <li>Nenhum livro cadastrado.</li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>
